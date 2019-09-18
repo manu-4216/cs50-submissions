@@ -75,8 +75,8 @@ int main(int argc, char *argv[])
             // read RGB triple from infile
             fread(&triple_read, sizeof(RGBTRIPLE), 1, inptr);
      
-            // Remove any red from all the pixels 
-            if (triple_read.rgbtRed == 0xff)
+            // Remove the strong red from all the pixels 
+            if (triple_read.rgbtRed >= 0xfd)
             {
                 triple_write.rgbtRed = 0x00;
             } 
