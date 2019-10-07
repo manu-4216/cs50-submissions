@@ -32,15 +32,18 @@ int main(int argc, char *argv[])
     bool imgFound = false;
     FILE *outptr[50];
     char outFileName[8];
+    int readDataLength;
 
     while (feof(filePointer) == 0)
     {
-        if (feof(filePointer) != 0)
+
+
+        readDataLength = fread(&currBlock, sizeof(BYTE), 512, filePointer);
+
+        if (readDataLength == 0)
         {
             break;
         }
-
-        fread(&currBlock, sizeof(BYTE), 512, filePointer);
 
 
         if (currBlock[0] == 0xff && currBlock[1] == 0xd8 && currBlock[2] == 0xff && ((currBlock[3] & 0xf0) == 0xe0))
