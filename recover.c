@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
             imgFound = true;
 
             // give a name to the output file
-            sprintf(outFileName, "%03d.jpg", imgIndex + 1);
+            sprintf(outFileName, "%03d.jpg", imgIndex);
 
             // open the i-th output file
             outptr[imgIndex] = fopen(outFileName, "w");
