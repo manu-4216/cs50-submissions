@@ -35,12 +35,8 @@ int main(int argc, char *argv[])
 
     while (feof(filePointer) == 0)
     {
-        fread(&currBlock, sizeof(BYTE), 512, filePointer);
 
-        if (imgFound)
-        {
-             fwrite(&currBlock, sizeof(currBlock), 1, outptr[imgIndex]);
-        }
+        fread(&currBlock, sizeof(BYTE), 512, filePointer);
 
 
         if (currBlock[0] == 0xff && currBlock[1] == 0xd8 && currBlock[2] == 0xff && ((currBlock[3] & 0xf0) == 0xe0))
@@ -70,6 +66,13 @@ int main(int argc, char *argv[])
 
             // write inside the i-th outut file
             fwrite(&currBlock, sizeof(currBlock), 1, outptr[imgIndex]);
+        }
+        else
+        {
+            if (imgFound)
+            {
+                fwrite(&currBlock, sizeof(currBlock), 1, outptr[imgIndex]);
+            }
         }
 
     }
