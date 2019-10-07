@@ -35,6 +35,10 @@ int main(int argc, char *argv[])
 
     while (feof(filePointer) == 0)
     {
+        if (feof(filePointer) != 0)
+        {
+            break;
+        }
 
         fread(&currBlock, sizeof(BYTE), 512, filePointer);
 
