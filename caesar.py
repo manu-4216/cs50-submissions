@@ -27,5 +27,5 @@ for c in plaintext:
     else:
         print(c, end='')
 
-print()
+
 
