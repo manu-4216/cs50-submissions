@@ -18,7 +18,7 @@ def searchSolution(z):
     new_change = z
     solution_found = False
     coin_index = -1
-    #Counts the total nr of coins used for the greedy solution (all values combined)
+    # Counts the total nr of coins used for the greedy solution (all values combined)
     total_coins_number = 0
     coin_values = [25, 10, 5, 1]
 
