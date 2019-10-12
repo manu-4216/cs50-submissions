@@ -11,6 +11,7 @@ else:
 
 key = int(key)
 plaintext = get_string('plaintext: ')
+print('ciphertext: ', end='')
 
 ai = ord('a')
 Ai = ord('A')
