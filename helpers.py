@@ -15,14 +15,6 @@ def lines(a, b):
 
     return lists(listA, listB)
 
-    # itemsInBothAB = list()
-    # for itemA in listA:
-    #     if itemA in listB and itemA not in itemsInBothAB:
-    #         itemsInBothAB.append(itemA)
-
-    # return itemsInBothAB
-
-
 def sentences(a, b):
     """Return sentences in both a and b"""
     sentencesA = sent_tokenize(a)
@@ -30,30 +22,6 @@ def sentences(a, b):
 
 
     return lists(sentencesA, sentencesB)
-
-    # itemsInBothAB = list()
-    # for itemA in sentencesA:
-    #     if itemA in sentencesB and itemA not in itemsInBothAB:
-    #         itemsInBothAB.append(itemA)
-
-
-        # for itemB in sentencesB:
-        #     if itemA == itemB:
-        #         isAlreadyInAB = False
-
-        #         for itemAB in itemsInBothAB:
-        #             if itemB == itemAB:
-        #                 isAlreadyInAB = True
-        #                 break
-
-        #         if isAlreadyInAB:
-        #             break
-        #         else:
-        #             itemsInBothAB.append(itemA)
-        #             break
-
-    # return itemsInBothAB
-
 
 def substrings(a, b, n):
 
