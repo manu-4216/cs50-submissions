@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <table class="table table-dark">
+        <tr>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Consent</th>
+        </tr>
+
+        {% for answer in answers %}
+            <tr>
+                <td>{{answer[0]}}</td>
+                <td>{{answer[1]}}</td>
+                <td>{{answer[2]}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
