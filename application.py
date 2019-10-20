@@ -223,15 +223,15 @@ def register():
 
         # Ensure username was submitted
         if not username:
-            return apology("must provide username", 403)
+            return apology("must provide username", 400)
 
         # Ensure password was submitted
         elif not password:
-            return apology("must provide password", 403)
+            return apology("must provide password", 400)
 
         # Ensure passwords match
         elif password != confirmation:
-            return apology("Passwords don't match", 403)
+            return apology("Passwords don't match", 400)
 
         # Query database for username
         rows = db.execute("SELECT * FROM users WHERE username = :username",
@@ -239,7 +239,7 @@ def register():
 
         # Ensure username doesn't exist
         if len(rows) > 0:
-            return apology("Username already exists", 403)
+            return apology("Username already exists", 400)
 
         hash = generate_password_hash(password)
         newId = db.execute("INSERT INTO users (username, hash) VALUES (:username, :hash)",
