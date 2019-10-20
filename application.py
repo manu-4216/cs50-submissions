@@ -321,7 +321,8 @@ def sell():
         #    , userId=userId, symbol=symbol, shares=shares)
 
 
-        return render_template("sold.html", name=result["name"], price=usd(price), funds=usd(newCash))
+        return redirect("/")
+        # return render_template("sold.html", name=result["name"], price=usd(price), funds=usd(newCash))
     # User reached route via GET (as by clicking a link or via redirect)
     else:
         return render_template("sell.html")
