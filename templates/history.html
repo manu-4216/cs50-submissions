@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History:
+{% endblock %}
+
+{% block main %}
+    <table class="table">
+        <tr>
+            <th>Type</th>
+            <th>Symbol</th>
+            <th>Number</th>
+            <th>Price</th>
+            <th>Date</th>
+        </tr>
+
+        {% for transaction in transactions %}
+            <tr>
+                <td>{{transaction.type}}</td>
+                <td>{{transaction.symbol}}</td>
+                <td>{{transaction.number}}</td>
+                <td>{{transaction.price}}</td>
+                <td>{{transaction.date}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
