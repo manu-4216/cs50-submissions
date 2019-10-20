@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index:
+{% endblock %}
+
+{% block main %}
+    <table class="table">
+        <tr>
+            <th>Symbol</th>
+            <th>Number</th>
+            <th>Curr. unit price</th>
+            <th>Value</th>
+        </tr>
+
+        {% for stock in stocks %}
+            <tr>
+                <td>{{stock.symbol}}</td>
+                <td>{{stock["SUM(number)"]}}</td>
+                <td>{{stock.price}}</td>
+                <td>{{usd(stock.value)}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <div>
+        Cash: {{cash}}
+    </div>
+
+    <div>
+        Grand total: {{total}}
+    </div>
+{% endblock %}
