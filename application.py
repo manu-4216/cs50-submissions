@@ -114,7 +114,8 @@ def buy():
         #    , userId=userId, symbol=symbol, shares=shares)
 
 
-        return render_template("bought.html", name=result["name"], price=usd(price), funds=usd(newCash))
+        # return render_template("bought.html", name=result["name"], price=usd(price), funds=usd(newCash))
+        return redirect("/")
     # User reached route via GET (as by clicking a link or via redirect)
     else:
         return render_template("buy.html")
