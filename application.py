@@ -79,15 +79,15 @@ def buy():
 
         # Ensure symbol is valid
         if not symbol:
-            return apology("must provide symbol", 403)
+            return apology("must provide symbol", 400)
 
         result = lookup(symbol)
         if result == None:
-            return apology("symbol not valid", 403)
+            return apology("symbol not valid", 400)
 
         # Ensure shares is positive integer
         if not shares.isdigit():
-            return apology("must provide shares number, positive integer", 403)
+            return apology("must provide shares number, positive integer", 400)
 
         shares = int(shares)
 
@@ -98,7 +98,7 @@ def buy():
         cash = rows[0]["cash"]
 
         if price * shares > cash:
-            return apology("Not enough funds", 403)
+            return apology("Not enough funds", 400)
 
         # Update the cash
         newCash = cash - price * shares
@@ -275,16 +275,16 @@ def sell():
 
         # Ensure symbol is valid
         if not symbol:
-            return apology("must provide symbol", 403)
+            return apology("must provide symbol", 400)
 
         result = lookup(symbol)
         if result == None:
-            return apology("symbol not valid", 403)
+            return apology("symbol not valid", 400)
         price = result["price"]
 
         # Ensure shares is positive integer
         if not shares.isdigit():
-            return apology("must provide shares number, positive integer", 403)
+            return apology("must provide shares number, positive integer", 400)
 
         shares = int(shares)
 
@@ -299,12 +299,12 @@ def sell():
             userId=userId, symbol=symbol)
 
         if len(rows) == 0:
-            return apology("No such share in your portfolio", 403)
+            return apology("No such share in your portfolio", 400)
 
         currentSharesOfSymbol = rows[0]["SUM(number)"]
 
         if currentSharesOfSymbol < shares:
-            return apology("Not enough shares in your portfolio", 403)
+            return apology("Not enough shares in your portfolio", 400)
 
         # Update the cash
         newCash = cash + price * shares
