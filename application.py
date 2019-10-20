@@ -62,7 +62,6 @@ def index():
 
     total = cash + stocksValue
 
-
     return render_template("index.html", stocks=stocks, cash=usd(cash), total=usd(total), usd=usd)
 
 
@@ -106,8 +105,8 @@ def buy():
         rows = db.execute("UPDATE users SET cash = :newCash WHERE id = :id", newCash=newCash, id=userId)
 
         # Create  an entry inside buy table
-        newId = db.execute("INSERT INTO buy (userId, symbol, price, number) VALUES (:userId, :symbol, :price, :shares)"
-            , userId=userId, symbol=symbol, price=price, shares=shares)
+        newId = db.execute("INSERT INTO buy (userId, symbol, price, number) VALUES (:userId, :symbol, :price, :shares)",
+                userId=userId, symbol=symbol, price=price, shares=shares)
 
         # Create  an entry inside portfolio of the user
         # newPortfolioEntry = db.execute("INSERT INTO portfolio (userId, symbol, number) VALUES (:userId, :symbol, :shares)"
@@ -115,7 +114,9 @@ def buy():
 
 
         # return render_template("bought.html", name=result["name"], price=usd(price), funds=usd(newCash))
+
         return redirect("/")
+
     # User reached route via GET (as by clicking a link or via redirect)
     else:
         return render_template("buy.html")
@@ -133,8 +134,8 @@ def history():
     """Show history of transactions"""
 
     userId = session["user_id"]
-    buyRows = db.execute("SELECT symbol, price, number, date FROM buy WHERE userId = :userId" , userId=userId)
-    sellRows = db.execute("SELECT symbol, price, number, date FROM sell WHERE userId = :userId" , userId=userId)
+    buyRows = db.execute("SELECT symbol, price, number, date FROM buy WHERE userId = :userId", userId=userId)
+    sellRows = db.execute("SELECT symbol, price, number, date FROM sell WHERE userId = :userId", userId=userId)
 
     for buy in buyRows:
         buy["type"] = "BUY"
@@ -218,7 +219,7 @@ def quote():
 def register():
     """Register user"""
 
-     # Forget any user_id
+    # Forget any user_id
     session.clear()
 
     # User reached route via POST (as by submitting a form via POST)
@@ -248,8 +249,7 @@ def register():
             return apology("Username already exists", 400)
 
         hash = generate_password_hash(password)
-        newId = db.execute("INSERT INTO users (username, hash) VALUES (:username, :hash)",
-                          username=username, hash=hash)
+        newId = db.execute("INSERT INTO users (username, hash) VALUES (:username, :hash)", username=username, hash=hash)
 
 
         # Remember which user has logged in
@@ -297,7 +297,7 @@ def sell():
 
         # Query buy for shares
         rows = db.execute("SELECT SUM(number) FROM buy WHERE (userId = :userId AND symbol = :symbol) GROUP BY number",
-            userId=userId, symbol=symbol)
+                userId=userId, symbol=symbol)
 
         if len(rows) == 0:
             return apology("No such share in your portfolio", 400)
@@ -313,8 +313,8 @@ def sell():
         rows = db.execute("UPDATE users SET cash = :newCash WHERE id = :id", newCash=newCash, id=userId)
 
         # Create  an entry inside sell table
-        newId = db.execute("INSERT INTO sell (userId, symbol, price, number) VALUES (:userId, :symbol, :price, :shares)"
-            , userId=userId, symbol=symbol, price=price, shares=shares)
+        newId = db.execute("INSERT INTO sell (userId, symbol, price, number) VALUES (:userId, :symbol, :price, :shares)",
+                userId=userId, symbol=symbol, price=price, shares=shares)
 
         # Create  an entry inside portfolio of the user
         # newPortfolioEntry = db.execute("INSERT INTO portfolio (userId, symbol, number) VALUES (:userId, :symbol, :shares)"
