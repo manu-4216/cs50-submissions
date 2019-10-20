@@ -202,6 +202,11 @@ def quote():
         symbol = request.form.get("symbol")
         result = lookup(symbol)
 
+        print(result)
+
+        if result is None:
+            return apology("invalid symbol", 400)
+
         return render_template("quoted.html", name=result["name"], price=usd(result["price"]))
     # User reached route via GET (as by clicking a link or via redirect)
     else:
