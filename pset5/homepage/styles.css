@@ -1,0 +1,45 @@
+body {
+    margin: 15px;
+    height: 100vh;
+}
+
+main {
+    margin-top: 30px;
+}
+
+a {
+    display: block;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+hr {
+    color: red;
+}
+
+h1 {
+    font-size: 150%;
+    margin: 5px 0;
+    padding: 0;
+}
+h2 {
+    font-size: 120%;
+}
+
+h3 {
+    font-size: 110%;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+}
+
+.top-space {
+    margin-top: 15px;
+}
