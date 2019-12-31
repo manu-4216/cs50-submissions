@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+    <h1 class="mb-3">Form</h1>
+
+    <!-- http://getbootstrap.com/docs/4.1/components/forms/ -->
+    <form action="/form" method="post">
+
+        <!-- TODO -->
+
+        <input class="name-input" type="text" name="name" placeholder="Name">
+
+        <select name="gender">
+            <option disabled selected>Gender</option>
+            <option value="m">Male</option>
+            <option value="f">Female</option>
+        </select>
+
+        <input type="checkbox" name="consent" value="yes">I am ok with receiving emails
+
+        <!-- http://getbootstrap.com/docs/4.1/components/buttons/ -->
+        <button class="submit-btn btn btn-primary" type="submit">Submit</button>
+
+    </form>
+
+    <script>
+
+        const submitBtn = document.querySelector('.submit-btn');
+        const nameInput = document.querySelector('.name-input');
+
+        submitBtn.addEventListener('click', function (event) {
+            if (!nameInput.value) {
+                alert('You need a name!');
+                event.preventDefault();
+            }
+        })
+
+    </script>
+
+{% endblock %}
